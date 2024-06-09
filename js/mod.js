@@ -1,13 +1,13 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
+	name: "stupid test tree",
+	id: "whatsanidanyway",
+	author: "mysteryflower",
+	pointsName: "dots",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -43,6 +43,9 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('l', 11)) gain = gain.times(2)
+	if (hasUpgrade('l', 12)) gain = gain.times(upgradeEffect('l', 12))
+	if (hasUpgrade('t', 11)) gain = gain.times(upgradeEffect('t', 11))
 	return gain
 }
 
